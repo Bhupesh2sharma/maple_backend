@@ -13,7 +13,7 @@ app.use(express.json());
 const allowedOrigins = [
     "http://localhost:3000",
     "https://maple-t-t.vercel.app",
-    
+    "https://maple-admin-ncu7.vercel.app"
 ];
 
 const corsOptions = {
