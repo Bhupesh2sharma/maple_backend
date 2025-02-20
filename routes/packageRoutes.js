@@ -1,17 +1,13 @@
 const express = require("express");
-const router = express.Router();
-const multer = require("multer");
+const upload = require("../config/multerConfig");
 const { createPackage, getAllPackages, getPackageById, updatePackage, deletePackage } = require("../controllers/packageController");
 
-// Multer setup for file uploads
-const storage = multer.diskStorage({
-  destination: "uploads/",
-  filename: (req, file, cb) => cb(null, Date.now() + "-" + file.originalname),
-});
-const upload = multer({ storage });
+const router = express.Router();
 
-// Package Routes
+// Route to create a package with an image upload
 router.post("/", upload.single("image"), createPackage);
+
+// Other routes
 router.get("/", getAllPackages);
 router.get("/:id", getPackageById);
 router.put("/:id", upload.single("image"), updatePackage);
